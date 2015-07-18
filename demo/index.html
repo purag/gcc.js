@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>gcc.js Demo</title>
+  <style>
+    textarea {
+      width: 300px;
+      height: 100px;
+    }
+  </style>
+  <script src="../gcc.js"></script>
+</head>
+<body>
+  Try compiling a function definition with just a return statement.
+  <br><br>
+  Something like this:
+  <br>
+  <pre>
+  int main () {
+      return -4090;
+  }
+  </pre>
+  It has two error checks; try an invalid C identifier or a really large return value.
+  <br><br>
+
+  <textarea></textarea><br>
+  <button>Compile</button>
+  <br>
+  <br>Compiled code:
+  <br>
+  <textarea id="compiled"></textarea>
+</body>
