@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    textarea {
+      width: 400px;
+      height: 250px;
+    }
+  </style>
+  <script src="../parsergen.js"></script>
+</head>
+<body>
+  Enter some C source ode and get it tokenized!
+  <br><br>
+  Doesn't support math operations yet. Also doesn't support pointers yet.
+  <br><br>
+  Something simple, like this, works:
+  <pre>
+int num = 14;
+char foo = 'a';
+
+int main (int argc) {
+    if (condition) {
+        return 0;
+    }
+    return 1;
+}
+<pre>
+  <textarea id="src"></textarea>
+  <br>
+  <button>Parse!</button>
+  <br><br>
+  <textarea id="parsed"></textarea>
+</body>
