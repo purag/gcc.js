@@ -5,31 +5,22 @@
     textarea {
       width: 400px;
       height: 250px;
+      display: inline-block;
+    }
+
+    pre {
+      height: 250px;
     }
   </style>
   <script src="../parsergen.js"></script>
   <script src="../parsergen-c.js"></script>
-  <script>
-    window.onload = function () {
-        document.querySelector("button").onclick = function () {
-            var val = new String(document.querySelector("#src").value);
-            document.querySelector("#parsed").value = "";
-            val.tokenize(function(tokens){
-                for (var i in tokens) {
-                    var token = tokens[i];
-                    document.querySelector("#parsed").value += "["+token.type+", "+token.entity+"]\n";
-                }
-            });
-        };
-    };
-  </script>
 </head>
 <body>
   Enter some C source code and get it tokenized!
   <br><br>
-  Doesn't support math operations yet. Also doesn't support pointers yet.
+  Now supports math operations, if statements, loops, etc. Doesn't support pointers or arrays.
   <br><br>
-  Something like this works (notice the simplistic instructions):
+  Here's a long demo that shows off a lot of functionality:
   <pre>
 static int bar = 99;
 char baz;
@@ -47,16 +38,41 @@ foobar (char arg1, int arg2)
 {
     int number = 19; /* inline comment support? */
     char foo = 'b';
-    if (condition)
+    if (bar != number)
     {
         number = 8;
+    } else if (bar > 0) {
+        number = 10;
+    } else {
+        number = 12;
     }
+    bar *= 9;
     return number;
+}
+
+unsigned int main (int argc, char * argv[]) {
+    fprintf(stdout, "Hello World\n");
+
+    unsigned int foobaz = 0;
+
+    switch (argc) {
+        case 1:
+            foobaz = number + 10;
+            break;
+        case 2:
+            foobaz = bar + 10;
+            break;
+        default:
+            foobaz = 10;
+    }
+
+    return foobaz;
 }
 <pre>
   <textarea id="src"></textarea>
   <br>
   <button>Parse!</button>
   <br><br>
+  <textarea id="tokenized"></textarea>
   <textarea id="parsed"></textarea>
 </body>
