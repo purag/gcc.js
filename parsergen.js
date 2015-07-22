@@ -170,12 +170,12 @@ function ParserGen (tokenizers) {
             var closest;
             for (var i in dict) {
                 /* if this tokenizer has a match, assign it to `closest` only if
-                 * (1) this match is closer than the current closest
-                 * (2) closest is not already set, or
+                 * (1) closest is not already set, or
+                 * (2) this match is closer than the current closest
                  */
                 if (dict[i].nextMatch
-                    && (dict[i].nextMatch.index < closest.nextMatch.index
-                        || !closest)
+                    && ( !closest
+                        || dict[i].nextMatch.index < closest.nextMatch.index)
                 ){
                    closest = dict[i];
                 }
